@@ -1,27 +1,74 @@
-// Copyright (c) 2019 ml5
+// // Copyright (c) 2019 ml5
+// //
+// // This software is released under the MIT License.
+// // https://opensource.org/licenses/MIT
 //
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-Webcam Image Classification using a pre-trained customized model and p5.js
-This example uses p5 preload function to create the classifier
-=== */
-
-// Global variable to store the classifier
+// /* ===
+// ml5 Example
+// Webcam Image Classification using a pre-trained customized model and p5.js
+// This example uses p5 preload function to create the classifier
+// === */
+//
+// // Global variable to store the classifier
+// let classifier;
+//
+// // Label (start by showing listening)
+// let label = "not park";
+//
+// // Teachable Machine model URL:
+// let soundModelURL = 'https://teachablemachine.withgoogle.com/models/qq43MGKnX/';
+//
+//
+// function preload() {
+//   // Load the model
+//   classifier = ml5.soundClassifier(soundModelURL);
+// }
+//
+// function setup() {
+//   createCanvas(320, 240);
+//   // Start classifying
+//   // The sound model will continuously listen to the microphone
+//   classifier.classify(gotResult);
+// }
+//
+// function draw() {
+//   background(0);
+//   // Draw the label in the canvas
+//   fill(255);
+//   textSize(32);
+//   textAlign(CENTER, CENTER);
+//   text(label, width / 2, height / 2);
+// }
+//
+//
+// // The model recognizing a sound will trigger this event
+// function gotResult(error, results) {
+//   if (error) {
+//     console.error(error);
+//     return;
+//   }
+//   // The results are in an array ordered by confidence.
+//   // console.log(results[0]);
+//   label = results[0].label;
+// }
+// <div>Teachable Machine Audio Model - p5.js and ml5.js</div>
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+// <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+// <script type="text/javascript">
+  // Global variable to store the classifier
 let classifier;
 
-// Label (start by showing listening)
-let label = "not park";
+// Label
+let label = 'listening...';
 
 // Teachable Machine model URL:
-let soundModelURL = 'https://teachablemachine.withgoogle.com/models/qq43MGKnX/';
+let soundModel = 'https://teachablemachine.withgoogle.com/models/qq43MGKnX/';
 
 
 function preload() {
   // Load the model
-  classifier = ml5.soundClassifier(soundModelURL);
+  classifier = ml5.soundClassifier(soundModel + 'model.json');
 }
 
 function setup() {
@@ -51,3 +98,4 @@ function gotResult(error, results) {
   // console.log(results[0]);
   label = results[0].label;
 }
+// </script>
